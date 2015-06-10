@@ -10,12 +10,15 @@ defmodule HelloPhoenix.EventController do
   end
 
   def create(conn, _params) do
-    if HelloPhoenix.Event.create(_params) do
+    {ok, result} = HelloPhoenix.Event.create(_params)
+    if ok == :ok do
       conn
-      |> send_resp(201, "")
+      |> put_status(201)
+      |> render "create.json", item: result
     else
       conn
-      |> send_resp(400, "")
+      |> put_status(400)
+      |> render "create.json", error: result
     end
   end
 
