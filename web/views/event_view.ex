@@ -5,8 +5,8 @@ defmodule HelloPhoenix.EventView do
     events
   end
 
-  def render("create.json", %{error: error}) do
-    %{error: error}
+  def render("create.json", %{errors: errors}) do
+    %{errors: errors}
   end
 
   def render("create.json", %{item: event}) do

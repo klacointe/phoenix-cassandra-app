@@ -38,7 +38,7 @@ defmodule HelloPhoenix.Event do
 
   defp validate(event) do
     errors = []
-    if event.type == nil do
+    if event.type == nil or event.type == "" do
       errors = errors ++ ["You must provide an event type"]
     end
     if length(errors) > 0 do
@@ -62,7 +62,7 @@ defmodule HelloPhoenix.Event do
     if ok == :ok do
       {ok, event}
     else
-      {ok, elem(result, 1)}
+      {ok, [elem(result, 1)]}
     end
   end
 end

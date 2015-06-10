@@ -18,7 +18,7 @@ defmodule HelloPhoenix.EventController do
     else
       conn
       |> put_status(400)
-      |> render "create.json", error: result
+      |> render "create.json", errors: result
     end
   end
 
